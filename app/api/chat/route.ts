@@ -5,6 +5,7 @@ export async function POST(req: NextRequest) {
   const apiKey = process.env.X_AI_API_KEY;
 
   if (!apiKey) {
+    console.error('API key is missing');
     return new Response(JSON.stringify({ error: 'API-nyckel saknas' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
@@ -16,6 +17,7 @@ export async function POST(req: NextRequest) {
     const priceResponse = await fetch(`${req.nextUrl.origin}/api/electricity-prices`);
     const priceData = await priceResponse.json();
     
+    console.log('Sending request to X.AI API...');
     const grokRes = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -114,7 +116,24 @@ Remember to:
       })
     });
 
+    if (!grokRes.ok) {
+      const errorData = await grokRes.text();
+      console.error('X.AI API error:', {
+        status: grokRes.status,
+        statusText: grokRes.statusText,
+        error: errorData
+      });
+      return new Response(JSON.stringify({ 
+        error: 'Kunde inte få svar från Grodan',
+        details: `API Error: ${grokRes.status} ${grokRes.statusText}`
+      }), {
+        status: grokRes.status,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     const data = await grokRes.json();
+    console.log('X.AI API response:', data);
     
     // Extrahera bara svarsinnehållet från AI:n och formatera det
     let responseContent = data.choices[0]?.message?.content || 'Kunde inte få svar från Grodan';
@@ -136,7 +155,14 @@ Remember to:
     return new Response(responseContent, {
       headers: { 'Content-Type': 'text/plain' }
     });
-  } catch {
-    return new Response('Error processing request', { status: 500 })
+  } catch (error) {
+    console.error('Error in chat API:', error);
+    return new Response(JSON.stringify({ 
+      error: 'Ett fel uppstod vid kommunikation med Grodan',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 } 

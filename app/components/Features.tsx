@@ -1,23 +1,3 @@
-import { BoltIcon, CurrencyDollarIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
-
-const features = [
-  {
-    name: 'Spara på din elkostnad',
-    description: 'Jämför och hitta det bästa elavtalet för just ditt behov. Vi hjälper dig att spara pengar på din elkostnad.',
-    icon: CurrencyDollarIcon,
-  },
-  {
-    name: 'Enkel och snabb',
-    description: 'Med vår tjänst kan du enkelt jämföra olika elavtal och byta leverantör på bara några minuter.',
-    icon: BoltIcon,
-  },
-  {
-    name: 'Säker och pålitlig',
-    description: 'Vi samarbetar endast med pålitliga elbolag och säkerställer att du får bästa möjliga service.',
-    icon: ShieldCheckIcon,
-  },
-]
-
 export default function Features() {
   return (
     <div className="bg-white py-24">

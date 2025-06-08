@@ -125,7 +125,7 @@ Remember to:
       if (parsedContent && typeof parsedContent === 'object' && 'content' in parsedContent) {
         responseContent = parsedContent.content;
       }
-    } catch (e) {
+    } catch {
       // Om det inte är JSON, använd svaret som det är
     }
     
@@ -136,11 +136,7 @@ Remember to:
     return new Response(responseContent, {
       headers: { 'Content-Type': 'text/plain' }
     });
-  } catch (error) {
-    console.error('Error:', error);
-    return new Response(JSON.stringify({ error: 'Ett fel uppstod' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+  } catch {
+    return new Response('Error processing request', { status: 500 })
   }
 } 

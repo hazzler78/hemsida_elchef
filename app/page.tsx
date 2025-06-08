@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Carousel } from "./components/Carousel";
 import ElectricityPrice from './components/ElectricityPrice';
 import { CheckCircleIcon, BoltIcon, CurrencyDollarIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
+import type { Metadata } from 'next'
 
 export default function Home() {
   return (
@@ -119,3 +119,7 @@ export default function Home() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  // ... existing code ...
+};

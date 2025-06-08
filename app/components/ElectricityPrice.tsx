@@ -5,35 +5,6 @@ import { Card } from './ui/card'
 import { Input } from './ui/input'
 import { ScrollArea } from './ui/scroll-area'
 
-const POSTAL_CODE_AREAS = {
-  'SE1': ['90', '91', '92', '93', '94', '95', '96', '97', '98', '99'], // Norra Sverige
-  'SE2': ['67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89'], // Norra Mellansverige
-  'SE3': ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66'], // Södra Mellansverige
-  'SE4': ['01', '02', '03', '04', '05', '06', '07', '08', '09'] // Södra Sverige
-}
-
-const AREA_NAMES = {
-  'SE1': 'Norra Sverige',
-  'SE2': 'Norra Mellansverige',
-  'SE3': 'Södra Mellansverige',
-  'SE4': 'Södra Sverige'
-}
-
-const AREA_EXAMPLES = {
-  'SE1': ['Luleå', 'Umeå', 'Skellefteå', 'Östersund', 'Sundsvall', 'Härnösand'],
-  'SE2': ['Arvika', 'Karlstad', 'Falun', 'Gävle', 'Västerås', 'Örebro'],
-  'SE3': ['Stockholm', 'Uppsala', 'Eskilstuna', 'Norrköping', 'Linköping', 'Jönköping'],
-  'SE4': ['Malmö', 'Helsingborg', 'Lund', 'Kristianstad', 'Halmstad', 'Göteborg']
-}
-
-// Uppdaterad postnummerlista med korrekta områden
-const POSTAL_CODE_AREAS_UPDATED = {
-  'SE1': ['90', '91', '92', '93', '94', '95', '96', '97', '98', '99'], // Norra Sverige
-  'SE2': ['67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89'], // Norra Mellansverige
-  'SE3': ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66'], // Södra Mellansverige
-  'SE4': ['01', '02', '03', '04', '05', '06', '07', '08', '09'] // Södra Sverige
-}
-
 // Uppdaterad lista med exempelstäder och postnummer
 const AREA_DETAILS = {
   'SE1': {
@@ -123,7 +94,7 @@ export default function ElectricityPrice() {
         console.log('Postal code:', value, 'Prefix:', prefix)
         
         // Hitta område baserat på exakt matchning av postnummerprefix
-        const area = Object.entries(AREA_DETAILS).find(([_, details]) => 
+        const area = Object.entries(AREA_DETAILS).find(([, details]) => 
           details.postalCodes.includes(prefix)
         )?.[0]
 

@@ -8,16 +8,6 @@ const AREA_NAMES = {
   'SE4': 'Södra Sverige'
 }
 
-interface PriceRecord {
-  SpotPriceDKK: number
-  HourUTC: string
-}
-
-interface ProcessedPrice {
-  price: number
-  time: string
-}
-
 // Simulerad data för testning
 const MOCK_DATA = {
   'SE1': {

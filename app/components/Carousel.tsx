@@ -43,7 +43,7 @@ export function Carousel() {
               className="flex-[0_0_100%] min-w-0 p-4"
             >
               <div className="bg-white rounded-lg shadow-lg p-6 mx-4">
-                <p className="text-gray-600 text-lg mb-4">"{testimonial.text}"</p>
+                <p className="text-lg text-gray-600">&ldquo;{testimonial.text}&rdquo;</p>
                 <div className="flex items-center">
                   <div>
                     <p className="font-semibold text-gray-900">{testimonial.name}</p>

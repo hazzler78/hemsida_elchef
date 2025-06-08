@@ -57,7 +57,8 @@ export function ChatBubble() {
       // Add the complete message to chat history
       setChatHistory(prev => [...prev, { text: fullMessage, isUser: false }])
       setCurrentStreamingMessage('')
-    } catch (err) {
+    } catch {
+      console.error('Error sending message');
       setChatHistory(prev => [...prev, { text: 'Tyvärr kunde jag inte svara just nu. Försök igen senare.', isUser: false }])
     } finally {
       setIsLoading(false)

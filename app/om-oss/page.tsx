@@ -1,4 +1,33 @@
-import Image from 'next/image'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Om Elchef',
+  description: 'Om Elchef, en plattform som gör det enklare för svenska hushåll och företag att spara pengar på sina elräkningar.',
+  keywords: ['Elchef', 'elräkning', 'spara pengar', 'elavtal', 'jämföra', 'byta leverantör'],
+  authors: [{ name: 'Elchef' }],
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Om Elchef',
+    description: 'Om Elchef, en plattform som gör det enklare för svenska hushåll och företag att spara pengar på sina elräkningar.',
+    url: 'https://elchef.se/om-oss',
+    siteName: 'Elchef',
+    images: [
+      {
+        url: 'https://elchef.se/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Om Elchef'
+      }
+    ],
+    locale: 'sv_SE',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@elchef',
+    creator: '@elchef'
+  }
+}
 
 export default function OmOss() {
   return (
